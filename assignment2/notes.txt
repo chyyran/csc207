@@ -1,0 +1,1002 @@
+#########
+# Step 1
+
+Code affected: none
+
+Created this file.
+
+#########
+# Step 2
+
+Code affected: all .java files
+
+Reformatted using the Google Java style formatter.
+
+#########
+# Step 3
+
+Code affected: Path.leave
+
+Flaw: unnecessary if, leading to duplicate code.
+
+Fix: replaced if statement with a single assignment statement.
+
+#########
+# Step 4
+
+Code affected: Path
+
+Flaw: names of fields were unclear and abbreviated
+
+Fix: clarified field names
+
+#########
+# Step 5
+
+Code affected: Direction.opposite
+
+Flaw: complex if statement could be replaced with switch
+
+Fix: replaced if statement with switch
+
+#########
+# Step 6
+
+Code affected: Person1.java, Person2.java, Person.java 
+
+Flaw: Unnecessary duplicate code in concrete Person instances 
+
+Fix: Refactor common behavior into base class and remove usages of concrete implementations
+
+#########
+# Step 7
+
+Code affected: *Path.java, Direction.java 
+
+Flaw: Direction represented a set of finite values, but could possibly take in invalid string values in initialization 
+
+Fix: Represent Direction as a finite enumeration that is mostly API-compatible with the previous implementation.
+
+#########
+# Step 8
+
+Code affected: IslandSimulation.main 
+
+Flaw: Conceivably instance-local fields were made static, which could cause bugs for multiple instances of IslandSimulation. 
+
+Fix: Make the static fields instance fields
+
+#########
+# Step 9
+
+Code affected: All java files 
+
+Flaw: Member access levels were at times not restrictive enough for its usage 
+
+Fix: Restrict member access levels to minimal level required
+
+#########
+# Step 10
+
+Code affected: All java files 
+
+Flaw: Particularly with Path classes, the role of each implementation was unclear in that should it be a sealed representation of a Path in a certain direction or an abstraction of a certain subset of Path. 
+
+Fix: We mark all classes that are used directly with the final modifier to disallow subclassing of directionally-marked Path implementations and other basic classes, and mark Path implementations that represent abstractions of certain types of Path with the abstract modifier. We also mark method stubs with the abstract modifier as required.
+
+#########
+# Step 11
+
+Code affected: Map.java 
+
+Flaw: AWT buttons were treated as fields when they could be locals in the constructor 
+
+Fix: Make button variables locals
+
+#########
+# Step 12
+
+Code affected: CrossPath.validDir, Path.validDir, StraightPath.validDir, TwoEndPath.validDir 
+
+Flaw: validDir implementation was identical across all classes 
+
+Fix: Move validDir into Path base class
+
+#########
+# Step 13
+
+Code affected: *Path.validDir 
+
+Flaw: exitOK is functionally equivalent to validDir 
+
+Fix: Replace all instances of exitOK with validDir
+
+#########
+# Step 14
+
+Code affected: CrossPath.java 
+
+Flaw: Paths and Directions were numbered but referred to cardinal directions 
+
+Fix: Rename variables to refer to directions.
+
+#########
+# Step 15
+
+Code affected: CrossPath.exit 
+
+Flaw: Large if structure simply returned the opposite direction 
+
+Fix: Return Direction.opposite
+
+#########
+# Step 16
+
+Code affected: CrossPath.java 
+
+Flaw: end* fields simply pointed to their respective Direction 
+
+Fix: Enumerated Direction literals allow us to simply replace the field with the literals themselves.
+
+#########
+# Step 17
+
+Code affected: All Java files 
+
+Flaw: Many variable names were single-lettered or poorly named 
+
+Fix: Make each variable name more descriptive
+
+#########
+# Step 18
+
+Code affected: Person.addToPath 
+
+Flaw: Directions were being compared using magic strings 
+
+Fix: Compare Directions with the enum literals
+
+#########
+# Step 19
+
+Code affected: Person.addToPath 
+
+Flaw: variable 'nD' had an unclear name 
+
+Fix: rename 'nD' to 'nextDirection'
+
+#########
+# Step 20
+
+Code affected: Path.ctor 
+
+Flaw: variable 'T' had an unclear name 
+
+Fix: rename 'T' to 'map'
+
+#########
+# Step 21
+
+Code affected: SwitchPath, subclasses of SwitchPath 
+
+Flaw: startAngle must always be set, but this is not guaranteed by the constructor 
+
+Fix: Move startAngle as a required argument in the constructor
+
+#########
+# Step 22
+
+Code affected: SwitchPath, subclasses of SwitchPath 
+
+Flaw: location-less constructor of SwitchPath was never used 
+
+Fix: Remove unused constructor
+
+#########
+# Step 23
+
+Code affected: SwitchPath, subclasses of SwitchPath 
+
+Flaw: access to startAngle was not required by SwitchPath subclasses 
+
+Fix: make startAngle private
+
+#########
+# Step 24
+
+Code affected: CornerPath, subclasses of CornerPath 
+
+Flaw: startAngle must always be set, but this is not guaranteed by the constructor 
+
+Fix: Move startAngle as a required argument in the constructor
+
+#########
+# Step 25
+
+Code affected: CornerPath, subclasses of CornerPath 
+
+Flaw: location-less constructor of CornerPath was never used 
+
+Fix: Remove unused constructor
+
+#########
+# Step 26
+
+Code affected: CornerPath, subclasses of CornerPath 
+
+Flaw: subclasses of CornerPath do not require access to startAngle 
+
+Fix: make startAngle private
+
+#########
+# Step 27
+
+Code affected: all java files 
+
+Flaw: There was an unnecessary semicolon at the end of all java files 
+
+Fix: remove the semicolon
+
+#########
+# Step 28
+
+Code affected: TreasureHunter.SwitchStraight, TreasureHunter.SwitchCorner 
+
+Flaw: Redundant if statement 
+
+Fix: Simplify the if statement
+
+#########
+# Step 29
+
+Code affected: TreasureHunter.switchStraight, TreasureHunter.switchCorner 
+
+Flaw: Method names were in PascalCase naming style not camelCase 
+
+Fix: rename according to camelCase style
+
+#########
+# Step 30
+
+Code affected: MapPanel.addToPanel 
+
+Flaw: for-loop could be replaced with foreach loop 
+
+Fix: Replace for-loop with foreach loop
+
+#########
+# Step 31
+
+Code affected: StraightPath, subclasses of StraightPath 
+
+Flaw: location-less constructor was never used 
+
+Fix: Remove unused constructor
+
+#########
+# Step 32
+
+Code affected: NSPath, EWPath 
+
+Flaw: Class names were not reflective of actual use. NSPath was used as a Vertical Path, and EWPath horizontal. There is no difference in an NSPath and a hypothetical SNPath, and similarly for EWPath. 
+
+Fix: Rename NSPath to VerticalPath, and EWPath to HorizontalPath
+
+#########
+# Step 33
+
+Code affected: Most java files 
+
+Flaw: Some fields that could be made final were not final 
+
+Fix: make those fields final
+
+#########
+# Step 34
+
+Code affected: SwitchPath, SwitchPath subclasses 
+
+Flaw: Line coordinates were stored as raw doubles 
+
+Fix: Abstract away coordinates into a immutable collection of points.
+
+#########
+# Step 35
+
+Code affected: StraightPath and subclasses of StraightPath 
+
+Flaw: Drawing coordinates were exposed as raw primitives 
+
+Fix: Abstract drawing coordinates as PointCollection
+
+#########
+# Step 36
+
+Code affected: CrossPath 
+
+Flaw: Drawing coordinates exposed as raw doubles 
+
+Fix: Abstract over using PointCollection
+
+#########
+# Step 37
+
+Code affected: CornerPath and subclasses of CornerPath 
+
+Flaw: Drawing coordinates exposed as raw doubles 
+
+Fix: Abstract over using PointCollection
+
+#########
+# Step 38
+
+Code affected: SwitchPath.exit, SwitchPath.register, SwitchPath.nextPath 
+
+Flaw: When SwitchPath is not straight is never considered for direction calculations 
+
+Fix: Consider whether or not SwitchPath is going straight when determining which direction to exit
+
+#########
+# Step 39
+
+Code affected: SwitchPath, subclasses of SwitchPath 
+
+Flaw: end2 is always opposite end1, and we want to enforce that invariant 
+
+Fix: Always infer end2 from the first end
+
+#########
+# Step 40
+
+Code affected: SwitchPath 
+
+Flaw: Rather than switching on the end directions, we can simply add to a HashMap that contains the paths 
+
+Fix: use a HashMap to store the neighbouring paths.
+
+#########
+# Step 41
+
+Code affected: CrossPath 
+
+Flaw: CrossPath switched over the direction to get the proper neighbour 
+
+Fix: Use a HashMap to handle neighbouring paths
+
+#########
+# Step 42
+
+Code affected: TwoEndPath 
+
+Flaw: TwoEndPath switched over the direction to get the proper neighbour 
+
+Fix: Use a HashMap to handle neighbouring paths
+
+#########
+# Step 43
+
+Code affected: Path, SwitchPath, CrossPath, TwoEndPath 
+
+Flaw: pathMap was common behavior amongst path implementations 
+
+Fix: Move pathMap up to Path
+
+#########
+# Step 44
+
+Code affected: CornerPath 
+
+Flaw: arcAngle can be static 
+
+Fix: make arcAngle static
+
+#########
+# Step 45
+
+Code affected: Map.ctor 
+
+Flaw: Initial loop to reset the map could be refactored out into a helper method 
+
+Fix: Refactor out reset into a helper method
+
+#########
+# Step 46
+
+Code affected: Map.ctor 
+
+Flaw: Paths had too be connected manually after declaration 
+
+Fix: We have a method connectPath that connects a path with all its neighbours, which we can do for all paths in the map.
+
+#########
+# Step 47
+
+Code affected: Map.connectPath 
+
+Flaw: Aliasing Direction enum literals was redundant 
+
+Fix: Use Direction enum literals directly.
+
+#########
+# Step 48
+
+Code affected: Map, +PathFactory 
+
+Flaw: Paths are instantiated using the constructor, we do not have a programmatic way to create a specified type of class. 
+
+Fix: Use Reflection to create a PathFactory that will create Path objects with the intention of implementing declarative Path construction.
+
+#########
+# Step 49
+
+Code affected: Map, PathFactory 
+
+Flaw: Having to manually assign created paths led to bugs if the row and column mismatched with the created Path 
+
+Fix:  Encapsulate assignment of Paths array in PathFactory.declarePath to make sure that there will not be such a mismatch
+
+#########
+# Step 50
+
+Code affected: Map.buildPath 
+
+Flaw: buildPath method had little to do with path creation 
+
+Fix: Rename buildPath to buildUserInterface
+
+#########
+# Step 51
+
+Code affected: Map, PathFactory 
+
+Flaw: Passing in the paths array into PathFactory was a leaky abstraction. In addition, immediately appending paths to the paths array could leave the array in an invalid state especially if the array size was not sufficient. 
+
+Fix: Move all path initialization logic into PathFactory. In addition we only mark the paths to be created when PathFactory.declarePath is called, and only create the path in a new array when PathFactory.toPathArray is called.
+
+#########
+# Step 52
+
+Code affected: Map, PathFactory 
+
+Flaw: PathFactory does not use an instance variable of map 
+
+Fix: Remove map argument from PathFactory constructor
+
+#########
+# Step 53
+
+Code affected: Map, IslandSimulation 
+
+Flaw: Map should not be responsible for creating it's default paths 
+
+Fix: Make Map accept PathFactor as a dependency
+
+#########
+# Step 54
+
+Code affected: Map 
+
+Flaw: personList was loosely typed as Object[] 
+
+Fix: Type personList as Person[]
+
+#########
+# Step 55
+
+Code affected: Map.personList 
+
+Flaw: Keeping track of the personList array requires a counter and bounds checking 
+
+Fix: Replace personList with an ArrayList.
+
+#########
+# Step 56
+
+Code affected: Map.buildUserInterface 
+
+Flaw: handleEvent is deprecated and messy 
+
+Fix: Replace accel/decel event handling with actionListeners
+
+#########
+# Step 57
+
+Code affected: Person.run 
+
+Flaw: accelerating too much reduces the delay into the negative 
+
+Fix: choose the maximum value 0 or the delay
+
+#########
+# Step 58
+
+Code affected: IslandSimulation, Map 
+
+Flaw: Starting the applet with the persons already running will make the Run button not work 
+
+Fix: Do not start the treasureHunterRunnable threads in IslandSimulation, in addition make the run button call Thread.start
+
+#########
+# Step 59
+
+Code affected: Map 
+
+Flaw: The field 'running' was never used 
+
+Fix: Remove unused field
+
+#########
+# Step 60
+
+Code affected: Person, Map 
+
+Flaw: Extending Thread and using the obsoleted methods Thread.start/suspend/resume is an antipattern and may cause deadlocks. In particular Thread.sleep is a heavy-handed approach for delayed execution. 
+
+Fix: We rewrite Person to be a runnable that is started with the default Thread implementation. Using flags to mark whether or not it is running, paused, and acquiring locks to use wait for delayed execution instead of Thread.sleep.
+
+#########
+# Step 61
+
+Code affected: Person 
+
+Flaw: Acquiring a lock of this to use the wait primitives could possibly lead to deadlock if an external lock was acquired on the Person instance. 
+
+Fix: With ScheduledExecutorService we can use a dedicated lock object, and avoid having to handle the case if the thread is interrupted.
+
+#########
+# Step 62
+
+Code affected: Path.enter 
+
+Flaw: Treasure would not spawn if spawned in the same place twice 
+
+Fix: spawn the treasure after marking hasTreasure to be false
+
+#########
+# Step 63
+
+Code affected: Person.setDelay 
+
+Flaw: scheduleAtFixedRate can not accept a delay less than or equal to 0 
+
+Fix: Prevent the delay from being less than or equal 0 by taking the minimum of the new delay and 1.
+
+#########
+# Step 64
+
+Code affected: Map 
+
+Flaw: handleEvent is deprecated. In addition String equality comparison for the Run/Stop button is potentially unsafe. 
+
+Fix: Replace handleEvent with actionListeners. In addition we close the possible states of the Run/Stop button by specifying the RunButtonStates enumeration.
+
+#########
+# Step 65
+
+Code affected: -Treasure 
+
+Flaw: Treasure class was never used 
+
+Fix: Remove unused class
+
+#########
+# Step 66
+
+Code affected: Path, subclasses of Path 
+
+Flaw: bounds() is deprecated in favour of the identical getBounds() method 
+
+Fix: Change all usages of bounds() to getBounds()
+
+#########
+# Step 67
+
+Code affected: MapPanel.draw 
+
+Flaw: the green border was never drawn 
+
+Fix: Draw the green border
+
+#########
+# Step 68
+
+Code affected: IslandSimulation.ctor, Path.ctor 
+
+Flaw: resize, move, show are deprecated methods in Component 
+
+Fix: Rename resize -> setSize, move -> setLocation, and show -> setVisible(true)
+
+#########
+# Step 69
+
+Code affected: MapPanel.insets 
+
+Flaw: insets() is a deprecated method 
+
+Fix: We override its replacement getInsets() instead of insets()
+
+#########
+# Step 70
+
+Code affected: SwitchPath 
+
+Flaw: handleEvent is a deprecated method 
+
+Fix: Replace handleEvent with an ad-hoc MouseListener
+
+#########
+# Step 71
+
+Code affected: MapPanel, PathFactory, Point, PointCollection 
+
+Flaw: The changed classes were not sufficiently documented with JavaDoc 
+
+Fix: Document the changed classes with JavaDoc.
+
+#########
+# Step 72
+
+Code affected: Person 
+
+Flaw: Field totalWeight was unused 
+
+Fix: Remove unused field totalWeight
+
+#########
+# Step 73
+
+Code affected: Person 
+
+Flaw: Field totalWeight, forward was unused 
+
+Fix: Remove unused field totalWeight, forward
+
+#########
+# Step 74
+
+Code affected: Map, Path, Person, TreasureHunter 
+
+Flaw: The changed classes were poorly documented 
+
+Fix: Properly document the changed classes with JavaDoc
+
+#########
+# Step 75
+
+Code affected: Path, subclasses of Path. 
+
+Flaw: Path does not require its location on the grid at all. 
+
+Fix: Remove all references to the grid location for Path.
+
+#########
+# Step 76
+
+Code affected: All java files 
+
+Flaw: Classes were not organized into packages 
+
+Fix: Organize classes into distinct packages
+
+#########
+# Step 77
+
+Code affected: -ColorUtils 
+
+Flaw: ColorUtils was unused 
+
+Fix: Remove ColorUtils
+
+#########
+# Step 78
+
+Code affected: MapPanel 
+
+Flaw: Paths are responsible for painting themselves. MapPanel attempted to double-buffer but in reality the code did nothing visible. 
+
+Fix: Remove useless drawing code.
+
+#########
+# Step 79
+
+Code affected: Person 
+
+Flaw: Decelerating too much would cause the delay to overflow 
+
+Fix: Prevent the delay from exceeding Integer.MAX_VALUE
+
+#########
+# Step 80
+
+Code affected: Person.addToPat, TreasureHunter 
+
+Flaw: nextTreasureHunter was not utilised throughout the code 
+
+Fix: Remove all references to nextTreasureHunter
+
+#########
+# Step 81
+
+Code affected: TreasureHunter 
+
+Flaw: weight, switchCorner, switchCorner were unused in TreasureHunter 
+
+Fix: Remove unused members
+
+#########
+# Step 82
+
+Code affected: Person.addToPath 
+
+Flaw: Code reliant on some "nextTreasureHunter" is useless after removing the dependency 
+
+Fix: Remove redundant code
+
+#########
+# Step 83
+
+Code affected: Path, Map.updateStatusBar, TreasureHunter, Person 
+
+Flaw: Person should not handle getting the score of the TreasureHunter 
+
+Fix: Move score accessors to TreasureHunter
+
+#########
+# Step 84
+
+Code affected: Person, Path, Map 
+
+Flaw: 'Person' is an ambiguous name for a class that solely manages moving a TreasureHunter on a separate thread. 
+
+Fix: Rename Person -> TreasureHunterRunnable
+
+#########
+# Step 85
+
+Code affected: IslandSimulation, Map, TreasureHunterRunnable 
+
+Flaw: TreasureHunterRunnable should not be responsible for adding itself to a Map by separation of concerns 
+
+Fix: Move assignment of TreasureHunterRunnable instance to Map exclusively under the method Map.addTreasureHunterRunnable
+
+#########
+# Step 86
+
+Code affected: Map 
+
+Flaw: Members 'first' and 'MAX_PATHS' were unused 
+
+Fix: Remove unused members
+
+#########
+# Step 87
+
+Code affected: Map 
+
+Flaw: If the runStopButton has a label not equal the the value of RunButtonStates.RUN, then the actionListener will not work 
+
+Fix: Make the runStopButton use the value of RunButtonStates.RUN.toString
+
+#########
+# Step 88
+
+Code affected: GridLoc, Map.addTreasureHunterRunnable 
+
+Flaw: GridLoc exposed raw fields 
+
+Fix: Make GridLoc expose getters for row and col and make GridLoc immutable
+
+#########
+# Step 89
+
+Code affected: Path, SwitchPath, TwoEndPath 
+
+Flaw: exitOK has a common implementation across TwoEndPath and SwitchPath relying on PathMap. 
+
+Fix: Move exitOK into Path base class. We allow exitOK to be overridden for optimizations such as for EmptyPath or CrossPath.
+
+#########
+# Step 90
+
+Code affected: Path, TreasureHunter 
+
+Flaw: Path.enter always returned true; the effects of Path.enter returning false is not well defined. 
+
+Fix: Make Path.enter a void method without regard of what is considered a "successful" entrance
+
+#########
+# Step 91
+
+Code affected: Path, SwitchPath 
+
+Flaw: occupied() method should be named isOccupied() in accordance with naming conventions 
+
+Fix: Rename occupied() -> isOccupied()
+
+#########
+# Step 92
+
+Code affected: Path, Subclasses of Path, TreasureHunter.move 
+
+Flaw: nextPath and exit are poorly named for the function they serve. Namely nextPath gets a registered neighbouring Path for the given direction, and exit gets the Direction through which a TreasureHunter can exit if given a direction they entered through 
+
+Fix: Rename nextPath -> getNeighbouringPath and exit -> getExitDirection as more descriptive names.
+
+#########
+# Step 93
+
+Code affected: Path 
+
+Flaw: Path was not completely documented 
+
+Fix: Completely document Path
+
+#########
+# Step 94
+
+Code affected: Path, subclasses of Path 
+
+Flaw: pathMap is not a very descriptive name for the purpose it serves, namely to store the mapping between direction and the paths that neighbour a certain Path 
+
+Fix: Rename pathMap to neighbouringPaths
+
+#########
+# Step 95
+
+Code affected: HorizontalPath, VerticalPath 
+
+Flaw: while HorizontalPath and VerticalPath are descriptive of their usage, the rest of the Paths follow a cardinal direction naming convention. EWPath and NSPath work just as well following this convention for describing the direction of the Paths. 
+
+Fix: Rename HorizontalPath, VerticalPath back to EWPath and NSPath respectively.
+
+#########
+# Step 96
+
+Code affected: Path, abstract subclasses of Path 
+
+Flaw: Path and abstract subclasses were missing full JavaDoc documentation. 
+
+Fix: Fully document Path and its abstract subclasses with JavaDoc.
+
+#########
+# Step 97
+
+Code affected: Direction 
+
+Flaw: Direction enumeration was not fully documented. 
+
+Fix: Fully document Direction enumeration.
+
+#########
+# Step 98
+
+Code affected: CornerPath 
+
+Flaw: There were no guarantees if end1 and end2 were not necessarily opposite each other. 
+
+Fix: Make the assertion that end1 and end2 must not be opposite each other.
+
+#########
+# Step 99
+
+Code affected: StraightPath, EWPath, NSPath 
+
+Flaw: There was no way to guarantee that the StraightPath would have 2 opposite ends. 
+
+Fix: A runtime assertion would be one way to assert the invariant, but it is more robust to simply remove the ability to specify the other end of a StraightPath and infer it as the opposite of the given end.
+
+#########
+# Step 100
+
+Code affected: final Path implementations 
+
+Flaw: Path implementations were not documented 
+
+Fix: Document Path implementations completely
+
+#########
+# Step 101
+
+Code affected: TreasureHunterRunnable.ctor 
+
+Flaw: threadName was never used after TreasureHunterRunnable (then Person), was converted into implementing the Runnable interface rather than extending Thread. 
+
+Fix: Remove unused threadName constructor parameter.
+
+#########
+# Step 102
+
+Code affected: TreasureHunterRunnable 
+
+Flaw: setSpeed simply delegated to setDelay. 
+
+Fix: Remove setSpeed and simply expose setDelay.
+
+#########
+# Step 103
+
+Code affected: IslandSimulation.main 
+
+Flaw: The entry point IslandSimulation.main had chunks of code which could have been refactored into helper methods.
+
+Fix: We refactor and rearchitecture the IslandSimulation class to separate individual chunks of code into helper methods.
+
+#########
+# Step 104
+
+Code affected: Map.spawnTreasure 
+
+Flaw: Map.spawnTreasure had a print to stdout 
+
+Fix: Remove call to System.out.println
+
+#########
+# Step 105
+
+Code affected: All java files. 
+
+Flaw: Code may have gotten out of format style through its changes. 
+
+Fix: Run all code through the IntelliJ formatter according to Google Java Style.
+
+#########
+# Step 106
+
+Code affected: Path, TwoEndPath, PathFactory, Direction, Point, PointCollection, TreasureHunterRunnable 
+
+Flaw: Declaration access could be weaker for members in the affected classes. 
+
+Fix: Enforce the weakest declaration access and finality modifiers for all possible members.
+
+#########
+# Step 107
+
+Code affected: GridLoc 
+
+Flaw: row is described as the x value, and column the y value, while it should be the inverse. 
+
+Fix: Fix the documentation to state that the row is y and the column is x.
+
+#########
+# Step 108
+
+Code affected: GridLoc, PathFactory, IslandSimulation, Map 
+
+Flaw: GridLoc can be renamed to GridLocation for further clarity 
+
+Fix: Rename GridLoc -> GridLocation
+
+#########
+# Step 109
+
+Document packages with package-info.java JavaDoc files.
+
+#########
+# Step 110
+
+Code affected: IslandSimulation
+
+Add 17 new pieces of the Path to the map. Paths added are as follows.
+
+	- NSEPath at Row: 5, Column: 3
+    - SNWPath at Row: 5, Column: 5
+
+    - NSPath at Row: 6, Column: 3
+    - NSPath at Row: 6, Column: 5
+
+    - SEPath at Row: 7, Column: 2
+    - CrossPath at Row: 7, Column: 3
+    - SWPath at Row: 7, Column: 4
+    - NSPath at Row: 7, Column: 5
+
+    - NSPath at Row: 8, Column: 2
+    - NEPath at Row: 8, Column: 3
+    - NWPath at Row: 8, Column: 4
+    - NSPath at Row: 8, Column: 5
+
+    - NEPath at Row: 9, Column: 2
+    - EWPath at Row: 9, Column: 3
+    - EWPath at Row: 9, Column: 4
+    - NWPath at Row: 9, Column: 5
+    - NWPath at Row: 9, Column: 5
+
